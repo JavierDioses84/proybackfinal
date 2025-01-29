@@ -1,0 +1,39 @@
+"""
+URL configuration for ProyectoBackFinal project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from inicio import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('login/', views.signin, name='login'),
+    path('signup/', views.signup),
+    path('home/', views.home, name='home'),
+    path('finanzas/', views.asesFin),
+    path('contacto/', views.contacto),
+    path('gestproc/', views.gestProc),
+    path('intelnegocio/', views.intelNeg),
+    path('logout/', views.signout, name='logout'),
+    path('servicios/', views.servicios, name='servicios'),
+    path('servicios/crear/', views.crear_Servicios, name='crear_serv'),
+    path('servicios/lista/', views.lista_servicios, name='lista_serv'),
+    path('servicios/<int:serv_id>/', views.detalle_servicio, name='det_serv'),
+    path('servicios/<int:serv_id>/asignar', views.asignar_servicio, name='asig_serv'),
+    path('servicios/<int:serv_id>/cerrar', views.cerrar_servicio, name='cerrar_serv'),
+    path('servicios/<int:serv_id>/eliminar', views.eliminar_servicio, name='elim_serv'),
+    path('nosotros/', views.nosot, name='nosotros'),
+]

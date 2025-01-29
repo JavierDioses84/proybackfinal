@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+      .bg-light{
+        transition: all 1s ease;
+      }
+      header{
+        margin-bottom: 100px;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <nav id="barra" class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'Iconos/Logo.png' %}" alt="ASDIZ">
+        </a>
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a id= "txtNav" class="nav-link active" aria-current="page" href="/home">Inicio</a>
+            <a id= "txtNav2" class="nav-link " href="/nosotros">Nosotros</a>
+            <a id= "txtNav3" class="nav-link" href="/servicios">Servicios</a>
+            <a id= "txtNav4" class="nav-link" href="/contacto">Contacto</a>
+            <a id= "txtNav5" class="nav-link" href="/logout">Cerrar Sesión</a>
+            <!--
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="false">Cerrar Sesion</a>
+            -->
+
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <div>
+    
+  </div>
+      
+
+      <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card border-0 justify-content-center p-2"> 
+                    <img src="{% static 'Imagenes/carrusel1.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Asesoría Financiera</h5>
+                      <p class="card-text" style="font-size: 0.9rem">Controle los ingresos, costos, activos, pasivos y patrimonio con diversas estratégias financieras.</p>
+                      <a href="/Secciones/asesorfinanzas.html" class="btn btn-primary bg-dark">Detalle</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 justify-content-center p-2">
+                    <img src="{% static 'Imagenes/Carrusel2.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Gestión por Procesos</h5>
+                      <p class="card-text" style="font-size: 0.9rem">Optimice las actividades de su negocio optimizando la gestión por procesos.</p>
+                      <a href="/Secciones/gestprocesos.html" class="btn btn-primary bg-dark">Detalle</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 justify-content-center p-2">
+                    <img src="{% static 'Imagenes/Carrusel3.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Inteligencia de Negocio</h5>
+                      <p class="card-text" style="font-size: 0.9rem">Implementar estrategias de Business Intelligence para obtener una ventaja competitiva.</p>
+                      <a href="/Secciones/intelnegocio.html" class="btn btn-primary bg-dark">Detalle</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+      </div>
+
+      
+      
+      <!--Agregando el footer-->
+      <footer>
+        <div class="container-fluid bg-dark p-5 pb-2 text-center">
+            <div class="row text-white">
+                <div class="col-xs12 col-md-6 col-lg-3">
+                  <p class="h3 mb-3">ASDIZ S.A.C.</p>
+                  <img src="{% static 'Iconos/Logo.png' %}" alt="ASDIZ">
+                  <div class="mb-2">
+                    <a href="/home" class="text-decoration-none text-light">Developed by JD.</a>
+                  </div>
+                </div>  
+                <div class="col-xs12 col-md-6 col-lg-3">
+                  <p class="h5 mt-3 mb-3">Servicios</p>
+                  <div class="mb-2">
+                    <a href="/finanzas" class="text-decoration-none text-light">Asesoría Financiera</a>
+                  </div>
+                  <div class="mb-2">
+                    <a href="/gestproc" class="text-decoration-none text-light">Gestión por Procesos</a>
+                  </div>
+                  <div class="mb-2">
+                    <a href="/intelnegocio" class="text-decoration-none text-light">Inteligencia de Negocio</a>
+                  </div>
+                </div>
+                <div class="col-xs12 col-md-6 col-lg-3">
+                  <p class="h5 mt-3 mb-3">Acerca de ASDIZ</p>
+                  <div class="mb-2">
+                    <a href="/home" class="text-decoration-none text-light">Inicio</a>
+                  </div>
+                  <div class="mb-2">
+                    <a href="/nosotros" class="text-decoration-none text-light">Nosotros</a>
+                  </div>
+                  <div class="mb-2">
+                    <a href="/servicios" class="text-decoration-none text-light">Servicios</a>
+                  </div>
+                  <div class="mb-2">
+                    <a href="/contacto" class="text-decoration-none text-light">Contacto</a>
+                  </div>
+                </div>  
+                <div class="col-xs12 col-md-6 col-lg-3">
+                  <p class="h5 mt-3 mb-3">Comunidad</p>
+                  <div class="mb-2">
+                    <a href="/home" class="text-decoration-none text-light"><i class="bi bi-linkedin"></i> AsdizConsultant</a>
+                  </div>
+                  <div class="mb-2">
+                    <a href="/home" class="text-decoration-none text-light"><i class="bi bi-facebook"></i> AsdizConsultant</a>
+                  </div>
+                  <div class="mb-2">
+                    <a href="/home" class="text-decoration-none text-light"><i class="bi bi-whatsapp"></i> +51 999888777</a>
+                  </div>
+                  <div class="mb-2">
+                    <a href="/home" class="text-decoration-none text-light"><i class="bi bi-instagram"></i> AsdizConsultant</a>
+                  </div>
+                </div>
+                <div class="col-xs-12 pt-4">
+                  <p class="text-white text-center">Copyright ASDIZ - All right reserved 2024</p>
+                </div>
+            </div>
+        </div>
+      </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
+
+    <!--Agregar cambio a navbar-->
+    <script>
+      $(window).scroll(function() {
+        if($("#barra").offset().top > 200) {
+          $("#barra").addClass("bg-dark");
+          $("#txtNav").addClass("text-light");
+          $("#txtNav2").addClass("text-light");
+          $("#txtNav3").addClass("text-light");
+          $("#txtNav4").addClass("text-light");
+          $("#txtNav5").addClass("text-light");
+        } else {
+          $("#txtNav5").removeClass("text-light");
+          $("#txtNav4").removeClass("text-light");
+          $("#txtNav3").removeClass("text-light");
+          $("#txtNav2").removeClass("text-light");
+          $("#txtNav").removeClass("text-light");
+          $("#barra").removeClass("bg-dark");
+        }
+      });
+    </script>
+</body>
+</html>
