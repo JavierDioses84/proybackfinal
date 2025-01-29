@@ -91,7 +91,31 @@ def lista_servicios(request):
     if request.user.is_superuser:
         servs =  Servicios.objects.filter()
     else:
-        servs =  Servicios.objects.filter(Usuario=request.user, fechaTermino__isnull=True)
+        servs =  Servicios.objects.filter(Usuario=request.user)
+    return render(request, 'listaServicios.html', {'servs' : servs})
+
+@login_required
+def lista_serviciosR(request):
+    if request.user.is_superuser:
+        servs =  Servicios.objects.filter()
+    else:
+        servs =  Servicios.objects.filter(Usuario=request.user, estado='Registrado')
+    return render(request, 'listaServicios.html', {'servs' : servs})
+
+@login_required
+def lista_serviciosAt(request):
+    if request.user.is_superuser:
+        servs =  Servicios.objects.filter()
+    else:
+        servs =  Servicios.objects.filter(Usuario=request.user, estado='En atención')
+    return render(request, 'listaServicios.html', {'servs' : servs})
+
+@login_required
+def lista_serviciosC(request):
+    if request.user.is_superuser:
+        servs =  Servicios.objects.filter()
+    else:
+        servs =  Servicios.objects.filter(Usuario=request.user, estado='Cerrado')
     return render(request, 'listaServicios.html', {'servs' : servs})
 
 '''
@@ -120,7 +144,7 @@ def delete_servicio(request, serv_id):
         return render(request, 'detalleServicios.html', {'error4' : 'Asigna solo el administrador'})
 '''
 
-@login_required
+@login_required #Proteger rutas
 def detalle_servicio(request, serv_id):
     if request.method == 'GET':
         if request.user.is_superuser:
@@ -144,40 +168,40 @@ def detalle_servicio(request, serv_id):
 @login_required
 def asignar_servicio(request, serv_id):
     serv = get_object_or_404(Servicios, pk=serv_id)
-    if request.user.is_superuser:
-        if request.method == 'POST':
-            serv.fechaTermino = timezone.now()
-            serv.estado = 'En atención'
-            serv.obsEstado = serv.obsEstado + ', actualmente en atención'
-            serv.save()
-            return redirect('lista_serv')
-    else:
-        return render(request, 'detalleServicio.html', {'serv' : serv, 'error2' : "Solo el usuario administrador asigna"})
+    #if request.user.is_superuser:
+    if request.method == 'POST':
+        serv.fechaTermino = timezone.now()
+        serv.estado = 'En atención'
+        serv.obsEstado = serv.obsEstado + ', actualmente en atención'
+        serv.save()
+        return redirect('lista_serv')
+    #else:
+    #    return render(request, 'detalleServicio.html', {'serv' : serv, 'error2' : "Solo el usuario administrador asigna"})
 
 @login_required
 def cerrar_servicio(request, serv_id):
     serv = get_object_or_404(Servicios, pk=serv_id)
-    if request.user.is_superuser:
-        if request.method == 'POST':
-            serv.fechaTermino = timezone.now()
-            serv.estado = 'Cerrado'
-            serv.obsEstado = serv.obsEstado + ', servicio cerrado y entregado'
-            serv.save()
-            return redirect('lista_serv')
-    else:
-        form = ServForm(instance=serv)
-        return render(request, 'detalleServicio.html', {'serv' : serv, 'form' : form, 'error3' : "Solo el usuario administrador cierra"})
+    #if request.user.is_superuser:
+    if request.method == 'POST':
+        serv.fechaTermino = timezone.now()
+        serv.estado = 'Cerrado'
+        serv.obsEstado = serv.obsEstado + ', servicio cerrado y entregado'
+        serv.save()
+        return redirect('lista_serv')
+    #else:
+    #    form = ServForm(instance=serv)
+    #    return render(request, 'detalleServicio.html', {'serv' : serv, 'form' : form, 'error3' : "Solo el usuario administrador cierra"})
 
 @login_required
 def eliminar_servicio(request, serv_id):
     serv = get_object_or_404(Servicios, pk=serv_id)
-    if request.user.is_superuser:
-        if request.method == 'POST':
-            serv.delete()
-            return redirect('lista_serv')
-    else:
-        form = ServForm(instance=serv)
-        return render(request, 'detalleServicio.html', {'serv' : serv, 'form' : form, 'error4' : "Solo el usuario administrador elimina"})
+    # if request.user.is_superuser:
+    if request.method == 'POST':
+        serv.delete()
+        return redirect('lista_serv')
+    # else:
+        #form = ServForm(instance=serv)
+        #return render(request, 'detalleServicio.html', {'serv' : serv, 'form' : form, 'error4' : "Solo el usuario administrador elimina"})
 
 @login_required
 def home(request):

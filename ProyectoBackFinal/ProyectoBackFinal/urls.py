@@ -15,22 +15,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from inicio import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', views.signin, name='login'),
+    path('', views.signin),
     path('signup/', views.signup),
     path('home/', views.home, name='home'),
     path('finanzas/', views.asesFin),
     path('contacto/', views.contacto),
     path('gestproc/', views.gestProc),
     path('intelnegocio/', views.intelNeg),
+    path('api/', include('inicio.urls')),
     path('logout/', views.signout, name='logout'),
     path('servicios/', views.servicios, name='servicios'),
     path('servicios/crear/', views.crear_Servicios, name='crear_serv'),
     path('servicios/lista/', views.lista_servicios, name='lista_serv'),
+    path('servicios/listaR/', views.lista_serviciosR, name='lista_servR'), #Registrados
+    path('servicios/listaAt/', views.lista_serviciosAt, name='lista_At'), #Atendiendo
+    path('servicios/listaC/', views.lista_serviciosC, name='lista_C'), #Cerrados
     path('servicios/<int:serv_id>/', views.detalle_servicio, name='det_serv'),
     path('servicios/<int:serv_id>/asignar', views.asignar_servicio, name='asig_serv'),
     path('servicios/<int:serv_id>/cerrar', views.cerrar_servicio, name='cerrar_serv'),

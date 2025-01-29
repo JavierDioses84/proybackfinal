@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'inicio'
 ]
 
@@ -82,7 +83,7 @@ WSGI_APPLICATION = 'ProyectoBackFinal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-"""
+#BD Local
 DATABASES = {
     #'default': {
     #    'ENGINE': 'django.db.backends.sqlite3',
@@ -98,14 +99,16 @@ DATABASES = {
     }
 }
 
-"""
 
+'''
+#Para produccion
 DATABASES = {
     'default' : dj_database_url.config(
         default='postgresql://portgres:postgres@localhost/portgres',
         conn_max_age=600
     )
 }
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
