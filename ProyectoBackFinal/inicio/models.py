@@ -3,7 +3,12 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Servicios(models.Model):
-    ServicioNombre = models.CharField(max_length=100)
+    SERVICIOS = {
+        'Fi' : 'Finanzas',
+        'Gp' : 'Procesos',
+        'BI' : 'Inteligencia de Negocio'
+    }
+    ServicioNombre = models.CharField(max_length=100, choices=SERVICIOS)
     detalleServicio = models.TextField(blank=True)
     fechaInicio = models.DateTimeField(auto_now_add=True)
     fechaTermino = models.DateField(null=True)
@@ -17,3 +22,4 @@ class Servicios(models.Model):
         return self.detalleServicio + ' - por ' + self.Usuario.username
 
 #En atencion, cerrado, cancelado
+
