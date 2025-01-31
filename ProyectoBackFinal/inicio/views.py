@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 
 from .forms import ServForm
+from .formCreate import ServFormCr
 from .models import Servicios
 
 # Create your views here.
@@ -67,18 +68,18 @@ def signin(request):
 def crear_Servicios(request):
     if request.method == 'GET':
         return render(request, 'crearServicios.html', {
-            'form' : ServForm
+            'form' : ServFormCr
         })
     else:
         try:
-            form = ServForm(request.POST)
+            form = ServFormCr(request.POST)
             nuevoServ = form.save(commit=False)
             nuevoServ.Usuario = request.user
             nuevoServ.save()
             return redirect('servicios')
         except ValueError:
             return render(request, 'crearServicios.html', {
-            'form' : ServForm,
+            'form' : ServFormCr,
             'error' : 'Ingresar datos validos'
         })
         """
