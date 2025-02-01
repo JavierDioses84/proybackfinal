@@ -87,7 +87,7 @@ def crear_Servicios(request):
             'form' : ServForm
         }) """
 
-@login_required
+@login_required # Listar todos los servicios
 def lista_servicios(request):
     if request.user.is_superuser:
         servs =  Servicios.objects.filter()
@@ -95,7 +95,7 @@ def lista_servicios(request):
         servs =  Servicios.objects.filter(Usuario=request.user)
     return render(request, 'listaServicios.html', {'servs' : servs})
 
-@login_required
+@login_required # Listar los servicios con estado registrado
 def lista_serviciosR(request):
     if request.user.is_superuser:
         servs =  Servicios.objects.filter()
@@ -169,15 +169,15 @@ def detalle_servicio(request, serv_id):
 @login_required
 def asignar_servicio(request, serv_id):
     serv = get_object_or_404(Servicios, pk=serv_id)
-    #if request.user.is_superuser:
-    if request.method == 'POST':
-        serv.fechaTermino = timezone.now()
-        serv.estado = 'En atención'
-        serv.obsEstado = serv.obsEstado + ', actualmente en atención'
-        serv.save()
-        return redirect('lista_serv')
-    #else:
-    #    return render(request, 'detalleServicio.html', {'serv' : serv, 'error2' : "Solo el usuario administrador asigna"})
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            serv.fechaTermino = timezone.now()
+            serv.estado = 'En atención'
+            serv.obsEstado = serv.obsEstado + ', actualmente en atención'
+            serv.save()
+            return redirect('lista_serv')
+    else:
+        return render(request, 'detalleServicio.html', {'serv' : serv, 'error2' : "Solo el usuario administrador asigna"})
 
 @login_required
 def cerrar_servicio(request, serv_id):

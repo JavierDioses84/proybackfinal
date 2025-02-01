@@ -122,6 +122,19 @@
     </div>    
   </div>
 
+  <div class="container mt-2 mb-3">
+    <div class="container mt-2">
+      {{error4}}
+
+      <form action="/servicios/" method="POST">
+        {% csrf_token %}
+        <button>
+          Salir
+        </button>
+      </form>
+    </div>    
+  </div>
+
   {% endblock %}
 
       <!--Agregando el footer-->

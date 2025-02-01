@@ -82,8 +82,10 @@ WSGI_APPLICATION = 'ProyectoBackFinal.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
+"""
 #BD Local
 DATABASES = {
     #'default': {
@@ -99,7 +101,7 @@ DATABASES = {
         'PORT' : 5432
     }
 }
-
+"""
 
 '''
 #Para produccion
