@@ -163,6 +163,8 @@ import os
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'ProyectoBackFinal/static'),)
 
+"""
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS' : 'drf_spectacular.openapi.AutoSchema',
 }
+"""
