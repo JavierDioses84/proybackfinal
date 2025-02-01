@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
+    'drf_spectacular',
     'inicio'
 ]
 
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'ProyectoBackFinal.wsgi.application'
 #https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-"""
+
 #BD Local
 DATABASES = {
     #'default': {
@@ -101,9 +102,9 @@ DATABASES = {
         'PORT' : 5432
     }
 }
+
+
 """
-
-
 #Para produccion
 DATABASES = {
     'default' : dj_database_url.config(
@@ -111,7 +112,7 @@ DATABASES = {
         conn_max_age=600
     )
 }
-
+"""
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -162,3 +163,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'ProyectoBackFinal/static'),)
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS' : 'drf_spectacular.openapi.AutoSchema',
+}
