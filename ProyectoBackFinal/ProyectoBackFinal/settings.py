@@ -42,9 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', #'rest_framework',
-    'drf_yasg',
-    'drf_spectacular',
+    'django.contrib.staticfiles', #'rest_framework', 'drf_yasg','drf_spectacular',
     'inicio'
 ]
 
