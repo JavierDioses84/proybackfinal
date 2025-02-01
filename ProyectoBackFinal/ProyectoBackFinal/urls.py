@@ -19,7 +19,7 @@ from django.urls import path, include
 from inicio import views
 
 from django.urls import re_path
-from rest_framework import permissions
+#from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
@@ -53,7 +53,7 @@ urlpatterns = [
     path('contacto/', views.contacto),
     path('gestproc/', views.gestProc),
     path('intelnegocio/', views.intelNeg),
-    path('api/', include('inicio.urls')),
+    #path('api/', include('inicio.urls')),
     path('logout/', views.signout, name='logout'),
     path('servicios/', views.servicios, name='servicios'),
     path('servicios/crear/', views.crear_Servicios, name='crear_serv'),
@@ -66,8 +66,8 @@ urlpatterns = [
     path('servicios/<int:serv_id>/cerrar', views.cerrar_servicio, name='cerrar_serv'),
     path('servicios/<int:serv_id>/eliminar', views.eliminar_servicio, name='elim_serv'),
     path('nosotros/', views.nosot, name='nosotros'),
-    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redocs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
-    path('api/docs/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='api-docs'),
+    #path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    #path('redocs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    #path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
+    #path('api/docs/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='api-docs'),
 ]
